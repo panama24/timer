@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 
-import { generateDisplay } from "./helpers";
+import { generateDisplay } from './helpers';
+import {
+  Container,
+  Copy,
+  CopyWrapper,
+  Layout,
+  Number,
+  NumberWrapper,
+  SegmentWrapper,
+} from './styles';
 
 class App extends Component {
   state = {
@@ -57,11 +66,24 @@ class App extends Component {
     });
 
     return (
-      <div className="App">
-        <h1>{time}</h1>
-        <h2>{display}</h2>
-        <h2>{segment}</h2>
-      </div>
+      <Container>
+        <Layout>
+          <CopyWrapper>
+            <Copy>{display}</Copy>
+          </CopyWrapper>
+          {time && (
+            <NumberWrapper>
+              <Number>{time}</Number>
+              <Copy>seconds</Copy>
+            </NumberWrapper>
+          )}
+          {segment && (
+            <SegmentWrapper>
+              <Copy>{segment}</Copy>
+            </SegmentWrapper>
+          )}
+        </Layout>
+      </Container>
     );
   }}
 
